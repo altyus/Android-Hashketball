@@ -16,8 +16,6 @@ public class Hashketball {
 
     }
 
-
-
     public HashMap<String, HashMap> getBasketballGame() {
         return mBasketballGame;
     }
