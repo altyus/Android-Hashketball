@@ -162,4 +162,71 @@ public class Hashketball {
         return null;
     }
 
+    public String[] teamNames(){
+        HashMap<String, HashMap>game = getBasketballGame();
+
+        ArrayList<String>teamNames = new ArrayList<String>();
+
+        HashMap<String, Object> awayTeam = game.get("awayTeam");
+        HashMap<String, Object> homeTeam = game.get("homeTeam");
+
+        teamNames.add((String)awayTeam.get("name"));
+        teamNames.add((String)homeTeam.get("name"));
+
+        String [] teamNamesArray = new String[teamNames.size()];
+        teamNamesArray = teamNames.toArray(teamNamesArray);
+
+        return teamNamesArray;
+    }
+
+    public String[] playerNumbers(String teamName) {
+        HashMap<String, HashMap> game = getBasketballGame();
+
+        ArrayList<String> playerNumbers = new ArrayList<String>();
+
+        HashMap<String, Object> awayTeam = game.get("awayTeam");
+        HashMap<String, Object> homeTeam = game.get("homeTeam");
+
+        HashMap<String, Object> desiredTeam = new HashMap<String, Object>();
+
+        if (awayTeam.get("name").equals(teamName)) {
+            desiredTeam = awayTeam;
+        } else if (homeTeam.get("name").equals(teamName)) {
+            desiredTeam = homeTeam;
+        }
+
+        ArrayList<HashMap<String, Object>> players = (ArrayList<HashMap<String, Object>>) desiredTeam.get("players");
+
+
+        for (HashMap<String, Object> player : players) {
+            playerNumbers.add((String) player.get("jerseyNumber"));
+        }
+        String[] playerNumbersArray = new String[playerNumbers.size()];
+        playerNumbersArray = playerNumbers.toArray(playerNumbersArray);
+
+        return playerNumbersArray;
+    }
+
+    public String playerWithLongestName() {
+        HashMap<String, HashMap> game = getBasketballGame();
+
+        HashMap<String, Object> awayTeam = game.get("awayTeam");
+        HashMap<String, Object> homeTeam = game.get("homeTeam");
+
+        ArrayList<HashMap<String, Object>> awayPlayers = (ArrayList<HashMap<String, Object>>) awayTeam.get("players");
+        ArrayList<HashMap<String, Object>> homePlayers = (ArrayList<HashMap<String, Object>>) homeTeam.get("players");
+
+        ArrayList<HashMap<String, Object>> allPlayers = new ArrayList<HashMap<String, Object>>(awayPlayers);
+        allPlayers.addAll(homePlayers);
+
+        String longestName = new String();
+
+        for (HashMap<String, Object> player : allPlayers) {
+            if (((String) player.get("name")).length() > longestName.length()) {
+                longestName = (String) player.get("name");
+            }
+        }
+
+        return longestName;
+    }
 }

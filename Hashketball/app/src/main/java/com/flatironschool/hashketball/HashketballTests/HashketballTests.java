@@ -6,6 +6,7 @@ import com.flatironschool.hashketball.Hashketball;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 
@@ -110,15 +111,39 @@ public class HashketballTests extends InstrumentationTestCase {
     }
 
     public void testTeamNames() throws Exception {
+        String[] teamNames = mHashketball.teamNames();
 
+        ArrayList<String>teamNamesList = new ArrayList<String>(Arrays.asList(teamNames));
+        assertEquals(teamNamesList.size(), 2);
+        assertTrue(teamNamesList.contains("Chicago Bulls"));
+        assertTrue(teamNamesList.contains("Brooklyn Nets"));
     }
 
     public void testPlayerNumbers() throws Exception {
+        String[] bullsNumbers = mHashketball.playerNumbers("Chicago Bulls");
+        String[] netsNumbers = mHashketball.playerNumbers("Brooklyn Nets");
 
+        ArrayList<String> bullsList = new ArrayList<String>(Arrays.asList(bullsNumbers));
+        ArrayList<String> netsList = new ArrayList<String>(Arrays.asList(netsNumbers));
+
+        assertEquals(bullsList.size(), 5);
+        assertEquals(netsList.size(), 5);
+
+        assertTrue(bullsList.contains("13"));
+        assertTrue(bullsList.contains("21"));
+        assertTrue(bullsList.contains("12"));
+        assertTrue(bullsList.contains("5"));
+        assertTrue(bullsList.contains("34"));
+
+        assertTrue(netsList.contains("8"));
+        assertTrue(netsList.contains("11"));
+        assertTrue(netsList.contains("34"));
+        assertTrue(netsList.contains("2"));
+        assertTrue(netsList.contains("30"));
     }
 
     public void testLongestName() throws Exception {
-
+        assertTrue(mHashketball.playerWithLongestName().equals("Deron Williams"));
     }
 
 
