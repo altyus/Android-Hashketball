@@ -60,7 +60,7 @@ returns your hashmap, there is no need to pass it in as an argument! You can jus
 
 Define a method to return the answer to the following question:
 
-1. Which player has the longest name? Call the method `player_with_longest_name`.
+1. Which player has the longest name? Call the method `playerWithLongestName()`.
 
 ## Resources
 * [Udemy](https://www.udemy.com/java-tutorial/#/lecture/161682)

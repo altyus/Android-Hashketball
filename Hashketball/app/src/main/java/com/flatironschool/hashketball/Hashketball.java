@@ -1,7 +1,11 @@
 package com.flatironschool.hashketball;
 
+import android.util.Log;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Hashtable;
 
 /**
  * Created by altyus on 6/30/14.
@@ -107,4 +111,55 @@ public class Hashketball {
     public HashMap<String, HashMap> getBasketballGame() {
         return mBasketballGame;
     }
+
+    public String shoeSize(String name) {
+        HashMap<String, HashMap> game = getBasketballGame();
+
+        HashMap<String, Object> awayTeam = game.get("awayTeam");
+        HashMap<String, Object> homeTeam = game.get("homeTeam");
+
+        ArrayList<HashMap<String, Object>> awayPlayers = (ArrayList<HashMap<String, Object>>)awayTeam.get("players");
+        ArrayList<HashMap<String, Object>> homePlayers = (ArrayList<HashMap<String, Object>>)homeTeam.get("players");
+
+        ArrayList<HashMap<String, Object>> allPlayers = new ArrayList<HashMap<String, Object>>(awayPlayers);
+        allPlayers.addAll(homePlayers);
+
+        for (HashMap<String, Object> player :allPlayers){
+            if (player.get("name").equals(name)){
+                return (String)player.get("shoeSize");
+            }
+        }
+        return null;
+    }
+
+    public String teamColors(String teamName) {
+        HashMap<String, HashMap> game = getBasketballGame();
+
+        HashMap<String, Object> awayTeam = game.get("awayTeam");
+        HashMap<String, Object> homeTeam = game.get("homeTeam");
+
+        HashMap<String, Object> desiredTeam = new HashMap<String, Object>();
+
+        if (awayTeam.get("name").equals(teamName)){
+            desiredTeam = awayTeam;
+        }
+        else if (homeTeam.get("name").equals(teamName)){
+            desiredTeam = homeTeam;
+        }
+
+        if (desiredTeam != null) {
+            StringBuilder colorString = new StringBuilder();
+
+            for (String color :(String[])desiredTeam.get("colors")){
+                if (colorString.length() > 0) {
+                    colorString.append(", ");
+                }
+                colorString.append(color);
+            }
+
+            return colorString.toString();
+        }
+        return null;
+    }
+
 }

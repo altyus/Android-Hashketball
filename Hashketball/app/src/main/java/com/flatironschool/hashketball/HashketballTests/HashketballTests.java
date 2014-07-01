@@ -90,6 +90,38 @@ public class HashketballTests extends InstrumentationTestCase {
         assertEquals((players.get(4)).get("shoeSize"), "12");
     }
 
+    public void testShoeSize() throws Exception {
+        String dunleavyShoes = mHashketball.shoeSize("Mike Dunleavy");
+        assertEquals("12", dunleavyShoes);
+
+        String boozerShoes = mHashketball.shoeSize("Carlos Boozer");
+        assertEquals("18", boozerShoes);
+
+        String evansShoes = mHashketball.shoeSize("Reggie Evans");
+        assertEquals("14", evansShoes);
+
+        String williamsShoes = mHashketball.shoeSize("Deron Williams");
+        assertEquals("13", williamsShoes);
+    }
+
+    public void testTeamColors() throws Exception {
+        String bullsColors = "Black, Red";
+        assertEquals(bullsColors, mHashketball.teamColors("Chicago Bulls"));
+    }
+
+    public void testTeamNames() throws Exception {
+
+    }
+
+    public void testPlayerNumbers() throws Exception {
+
+    }
+
+    public void testLongestName() throws Exception {
+
+    }
+
+
     @Override
     protected void tearDown() {
 
