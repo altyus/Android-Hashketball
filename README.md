@@ -1,7 +1,4 @@
----
-  tags: HashMaps, iteration
-  languages: java
----
+
 
 # Hashketball
 
