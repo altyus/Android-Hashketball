@@ -61,4 +61,4 @@ Define a method to return the answer to the following question:
 
 ## Resources
 * [Udemy](https://www.udemy.com/java-tutorial/#/lecture/161682)
-<a href='https://learn.co/lessons/Android-Hashketball' data-visibility='hidden'>View this lesson on Learn.co</a>
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/Android-Hashketball' title='Hashketball'>Hashketball</a> on Learn.co and start learning to code for free.</p>
